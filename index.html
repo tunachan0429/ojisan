@@ -518,12 +518,14 @@ function resultCard(title,badge,text,isHot){
       <button class="icon-btn" onclick="copyText('${id}')">📋 コピー</button>
       <button class="icon-btn" onclick="shareX('${id}')">𝕏 投稿</button>
       <button class="icon-btn" onclick="shareLine('${id}')">💬 LINE</button>
+      <button class="icon-btn" onclick="shareDiscord('${id}')">🎮 Discord</button>
       <button class="icon-btn" onclick="speak('${id}')">🔊 読む</button>
     </div></div>`;
 }
 window.copyText=id=>{navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>toast('コピーしたよぉ〜😍💕'));};
 window.shareX=id=>{const t=encodeURIComponent(document.getElementById(id).innerText.slice(0,130)+'… #オジサン翻訳機');window.open('https://twitter.com/intent/tweet?text='+t,'_blank');};
 window.shareLine=id=>{const t=encodeURIComponent(document.getElementById(id).innerText);window.open('https://line.me/R/share?text='+t,'_blank');};
+window.shareDiscord=id=>{const t=document.getElementById(id).innerText;navigator.clipboard.writeText(t).then(()=>{window.open('https://discord.com/channels/@me','_blank');toast('コピーしたよぉ〜😍Discordに貼ってねぇ〜🎮💕');});};
 window.speak=id=>{const u=new SpeechSynthesisUtterance(document.getElementById(id).innerText);u.lang='ja-JP';u.rate=.95;speechSynthesis.cancel();speechSynthesis.speak(u);toast('読み上げるよぉ〜🎵😘');};
 
 function renderReport(text,o){
